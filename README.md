@@ -7,3 +7,6 @@ Esse repositório será deletado após a avaliação
 
 ## Leitor
 Faz a leitura de todos os arquivos
+
+## Objeto carro
+Condiciona todas as informações em objetos, filtrando os resultados do objeto anterior
