@@ -14,12 +14,11 @@ Ler arquivos (bem desorganizados) de modo a produzir gráficos
     <image width = 100% src="./static/dataframe.png"/> 
 </p>
 
+<img align="right" width='55%' src="./static/grafico02.png">
 
 > Foi permitido ser pythonic
 >
 > Pediu pra usar orientação a objeto, então exagerei
-
-<img align="right" width='55%' src="./static/grafico02.png">
 
 ## Main
 Onde o programa realmente vai rodar, printando as formas dos objetos e plotando os gráficos.
@@ -31,10 +30,10 @@ Faz a leitura de todos os arquivos em encoding UTF-8 (por causa do windows)
 ## Objeto carro
 Condiciona todas as informações em objetos, filtrando os resultados do objeto anterior
 
-<image align="left" width='60%' src="./static/grafico01.png"/> 
-
 ## Objeto grafico
 Recebe os dados e transforma em um gráfico
+
+<image align="left" width='40%' src="./static/grafico01.png"/> 
 
 ### Java
 Só uma brincadeira, pra descontrair, para lembrar Java (que era a linguagem usada anteiormente na disciplina)
