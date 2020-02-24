@@ -30,10 +30,10 @@ Faz a leitura de todos os arquivos em encoding UTF-8 (por causa do windows)
 ## Objeto carro
 Condiciona todas as informações em objetos, filtrando os resultados do objeto anterior
 
+<image align="left" width='50%' src="./static/grafico01.png"/> 
+
 ## Objeto grafico
 Recebe os dados e transforma em um gráfico
-
-<image align="left" width='40%' src="./static/grafico01.png"/> 
 
 ### Java
 Só uma brincadeira, pra descontrair, para lembrar Java (que era a linguagem usada anteiormente na disciplina)
