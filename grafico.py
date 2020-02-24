@@ -1,10 +1,20 @@
 import matplotlib.pyplot as plt
 
 class Grafico:
+    '''
+    Objeto que irá receber os dados e montar um gráfico a partir deles
+    '''
     def __init__(self, dicionario):
         self.dicionario = dicionario
 
     def graficoDeBarras(self, tipo, titulo, nomeX, nomeY = "Quantidade"):
+        '''
+        Recebe o tipo de dado (que contenha no dicionário oferecido)
+        O título do gráfico
+        Nome do eixo X
+        Nome do eixo Y (Quantidade por padrão)
+        E plota um gráfico de barras verticais
+        '''
         labels, quantidade = self.contaDados(tipo)
 
         figura, grafico = plt.subplots(figsize = (8, 7))
@@ -18,6 +28,13 @@ class Grafico:
         plt.show()
 
     def graficoDeBarrasDeLado(self, tipo, titulo, nomeY, nomeX = "Quantidade"):
+        '''
+        Recebe o tipo de dado (que contenha no dicionário oferecido)
+        O título do gráfico
+        Nome do eixo X (Quantidade por padrão)
+        Nome do eixo Y 
+        E plota um gráfico de barras horizontais
+        '''
         labels, quantidade = self.contaDados(tipo)
 
         plt.barh(labels, quantidade)
@@ -29,6 +46,12 @@ class Grafico:
         plt.show()
 
     def graficoPizza(self, tipo, titulo, tituloDaLegenda):
+        '''
+        Recebe o tipo de dado (que contenha no dicionário oferecido)
+        O título do gráfico
+        O título da legenda
+        E plota um gráfico de pizza
+        '''
         labels, quantidade = self.contaDados(tipo)
 
         figura, grafico = plt.subplots(figsize = (7, 7))
@@ -42,6 +65,13 @@ class Grafico:
         plt.show()
 
     def contaDados(self, dado):
+        '''
+        Recebe um tipo de dado no dicionário
+        E conta quantos elementos existem daquele dado
+        Exemplo:
+            O tipo de dado são as cores
+            Ele vai contar quantos vermelhos, azuis, amarelos... existem
+        '''
         labels, quantidade = [], []
         for x in self.dicionario[dado]:
             if x not in labels:
