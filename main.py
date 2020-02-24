@@ -24,7 +24,8 @@ if __name__ == '__main__':
     
     print('- - ' * 20 + "\n" + "Pandas.DataFrame") # Não pode, é feio!!
     print(resultado)
-    resultado.plot(kind='bar', x = 'marca', y = 'quilometragem', figsize = (8, 7))       #1
+    resultado.plot(kind='bar', x = 'marca', y = 'quilometragem', figsize = (8, 7),      #1
+    title = "Quilometragem por marca")       
 
     
     # Manipulando o Matplotlib
