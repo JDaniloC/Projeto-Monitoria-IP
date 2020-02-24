@@ -31,48 +31,48 @@ class Carro:
         '''
         resultado = []
         for veiculo in listaDeObjetos:
-            
-            # Todas as informações realmente importantes e demais
-            caracteristicas = {'modelo': " ".join(veiculo[0].split()[1:]), 
-                               'ano':None, 'cor':None, 'potência do motor':None,
-                               'quilometragem':None, 'marca':veiculo[0].split()[0],
-                               'câmbio':None, 'km': None, 'transmissão:': None, 'motor:': None}
-            etc = {}
+            if veiculo != []:
+                # Todas as informações realmente importantes e demais
+                caracteristicas = {'modelo': " ".join(veiculo[0].split()[1:]), 
+                                'ano':None, 'cor':None, 'potência do motor':None,
+                                'quilometragem':None, 'marca':veiculo[0].split()[0],
+                                'câmbio':None, 'km': None, 'transmissão:': None, 'motor:': None}
+                etc = {}
 
 
-            # Pula de dois em dois por causa da disposição dos dados
-            for informacoes in range(0, len(veiculo), 2):
-                # Verifica se o tipo está nas características e adiciona o valor (em seguida)
-                if veiculo[informacoes].lower() in caracteristicas:
-                    caracteristicas[veiculo[informacoes].lower()] = veiculo[informacoes + 1]
+                # Pula de dois em dois por causa da disposição dos dados
+                for informacoes in range(0, len(veiculo), 2):
+                    # Verifica se o tipo está nas características e adiciona o valor (em seguida)
+                    if veiculo[informacoes].lower() in caracteristicas:
+                        caracteristicas[veiculo[informacoes].lower()] = veiculo[informacoes + 1]
+                    
+                    # O caso especial onde tá tudo em uma linha
+                    elif informacoes + 1 != len(veiculo) and veiculo[informacoes + 1].split()[0] == 'Conservação:':
+                        especial = veiculo[informacoes + 1].split()
+                        for i in range(0, len(especial), 2):
+                            if especial[i].lower() in caracteristicas:
+                                caracteristicas[especial[i].lower()] = especial[i + 1]
+                            elif especial[i] == 'Final':
+                                etc[' '.join(especial[i:i+3])] = especial[i + 3]
+                            elif especial[i] != 'placa:':
+                                etc[especial[i]] = especial[i + 1]
+                                    
+                    # Os extras
+                    elif informacoes + 1 != len(veiculo):
+                        if veiculo[informacoes] == caracteristicas['marca'] + ' ' + caracteristicas['modelo']:
+                            etc['Estado'] = veiculo[informacoes + 1]
+                        else:
+                            etc[veiculo[informacoes]] = veiculo[informacoes + 1]
                 
-                # O caso especial onde tá tudo em uma linha
-                elif informacoes + 1 != len(veiculo) and veiculo[informacoes + 1].split()[0] == 'Conservação:':
-                    especial = veiculo[informacoes + 1].split()
-                    for i in range(0, len(especial), 2):
-                        if especial[i].lower() in caracteristicas:
-                            caracteristicas[especial[i].lower()] = especial[i + 1]
-                        elif especial[i] == 'Final':
-                            etc[' '.join(especial[i:i+3])] = especial[i + 3]
-                        elif especial[i] != 'placa:':
-                            etc[especial[i]] = especial[i + 1]
-                                
-                # Os extras
-                elif informacoes + 1 != len(veiculo):
-                    if veiculo[informacoes] == caracteristicas['marca'] + ' ' + caracteristicas['modelo']:
-                        etc['Estado'] = veiculo[informacoes + 1]
-                    else:
-                        etc[veiculo[informacoes]] = veiculo[informacoes + 1]
-            
-            
-            # Criando o objeto Carro com as informações coletadas
-            resultado.append(Carro(caracteristicas['modelo'], ano = caracteristicas['ano'],
-                                       cor = caracteristicas['cor'],
-                                       motor = caracteristicas['potência do motor'] if caracteristicas['motor:'] == None else caracteristicas['motor:'],
-                                       quilometragem = caracteristicas['quilometragem'] if caracteristicas['km'] == None else caracteristicas['km'],
-                                       marca = caracteristicas['marca'],
-                                       transmissao = caracteristicas['câmbio'] if caracteristicas['câmbio'] != None else caracteristicas['transmissão:'],
-                                       etc =  etc))
+                
+                # Criando o objeto Carro com as informações coletadas
+                resultado.append(Carro(caracteristicas['modelo'], ano = caracteristicas['ano'],
+                                        cor = caracteristicas['cor'],
+                                        motor = caracteristicas['potência do motor'] if caracteristicas['motor:'] == None else caracteristicas['motor:'],
+                                        quilometragem = caracteristicas['quilometragem'] if caracteristicas['km'] == None else caracteristicas['km'],
+                                        marca = caracteristicas['marca'],
+                                        transmissao = caracteristicas['câmbio'] if caracteristicas['câmbio'] != None else caracteristicas['transmissão:'],
+                                        etc =  etc))
         return resultado
 
     def __str__(self):
