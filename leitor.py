@@ -33,7 +33,7 @@ class Leitor:
         4 - Se der errado, devolve uma lista vazia
         '''
         try:
-            with open(archivePath, 'r') as arquivo:
+            with open(archivePath, 'r', encoding = 'utf-8') as arquivo:
                 informacoes = arquivo.readlines()
         except:
             informacoes = []
