@@ -9,6 +9,9 @@ from grafico import Grafico
 from main import criaDataframe
 
 class Programa:
+    '''
+    Interface gráfica
+    '''
     def __init__(self):
         self.janela = Tk()
         self.widgets()
@@ -17,6 +20,9 @@ class Programa:
         self.janela.mainloop()
 
     def widgets(self):
+        '''
+        Carrega todos os widgets
+        '''
         tipos, valores = ['bar', 'barh', 'line', 'hist', 'box', 'area', 'scatter'], ['marca', 'quilometragem', 'motor', 'transmissao', 'cor']
 
         Label(self.janela, text = 'Nome da pasta: ').grid(row = 0, column = 0)
@@ -32,19 +38,22 @@ class Programa:
         Label(self.janela, text = 'Gráfico de barras: ').grid(row = 2, column = 0)
         self.vertical = StringVar(value = valores[2])
         ttk.Combobox(self.janela, textvariable = self.vertical, values = valores[2:], state = 'readonly').grid(row = 2, column = 1)
-        Button(self.janela, text = 'plotar', width = 13, command = self.plotV).grid(row = 2, column = 2)
+        Button(self.janela, text = 'plotar', width = 13, command = self.plotGraficoVertical).grid(row = 2, column = 2)
 
         Label(self.janela, text = 'Gráfico horizontal: ').grid(row = 3, column = 0)
         self.horizontal = StringVar(value = valores[3])
         ttk.Combobox(self.janela, textvariable = self.horizontal, values = valores[2:], state = 'readonly').grid(row = 3, column = 1)
-        Button(self.janela, text = 'plotar', width = 13, command = self.plotH).grid(row = 3, column = 2)
+        Button(self.janela, text = 'plotar', width = 13, command = self.plotGraficoHorizontal).grid(row = 3, column = 2)
 
         Label(self.janela, text = 'Gráfico de pizza: ').grid(row = 4, column = 0)
         self.pizza = StringVar(value = valores[4])
         ttk.Combobox(self.janela, textvariable = self.pizza, values = valores[2:], state = 'readonly').grid(row = 4, column = 1)
-        Button(self.janela, text = 'plotar', width = 13, command = self.plotP).grid(row = 4, column = 2)
+        Button(self.janela, text = 'plotar', width = 13, command = self.plotGraficoPizza).grid(row = 4, column = 2)
 
     def carregar(self):
+        '''
+        Tenta ler os arquivos e formatalos, se der errado devolve uma lista vazia
+        '''
         self.veiculos = Carro.formatadorDeCarros(Leitor.lerArquivos(self.entrada.get()))
 
         if self.veiculos != []:
@@ -56,20 +65,32 @@ class Programa:
             messagebox.showwarning('Arquivo', "Pasta não encontrada ou arquivos vazios")
 
     def plotPandas(self):
+        '''
+        Plota o gráfico da quilometragem que é o único numérico de fato
+        '''
         if self.carregado: 
             self.dataframe.plot(kind = self.pandas.get(), x = 'marca', y = 'quilometragem', figsize = (8, 7))
             plt.show()
         else: messagebox.showinfo('Aviso', 'Você precisa carregar os arquivos primeiro!')
 
-    def plotV(self):
+    def plotGraficoVertical(self):
+        '''
+        Plota o gráfico de barras verticais
+        '''
         if self.carregado: self.criadorDeGrafico.graficoDeBarras(self.vertical.get()) 
         else: messagebox.showinfo('Aviso', 'Você precisa carregar os arquivos primeiro!')
     
-    def plotH(self):
+    def plotGraficoHorizontal(self):
+        '''
+        Plota o gráfico de barras horizontais
+        '''
         if self.carregado: self.criadorDeGrafico.graficoDeBarrasDeLado(self.horizontal.get())
         else: messagebox.showinfo('Aviso', 'Você precisa carregar os arquivos primeiro!')
     
-    def plotP(self):
+    def plotGraficoPizza(self):
+        '''
+        Plota o gráfico de pizza
+        '''
         if self.carregado: self.criadorDeGrafico.graficoPizza(self.pizza.get()) 
         else: messagebox.showinfo('Aviso', 'Você precisa carregar os arquivos primeiro!')
 

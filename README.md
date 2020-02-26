@@ -36,8 +36,8 @@ Condiciona todas as informações em objetos, filtrando os resultados do objeto 
 ## Objeto grafico
 Recebe os dados e transforma em um gráfico
 
-### Java
-Só uma brincadeira, pra descontrair, para lembrar Java (que era a linguagem usada anteiormente na disciplina)
+### Programa
+Uma interface gráfica para o script, onde é possível escolher que tipo de gráfico irá ser exibido
 
 ### Filtragem
 <image src="./static/formato.png"/> 
