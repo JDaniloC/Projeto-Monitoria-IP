@@ -3,9 +3,9 @@ from tkinter import ttk, messagebox
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from leitor import Leitor
-from carro import Carro
-from grafico import Grafico
+from utils.leitor import Leitor
+from utils.carro import Carro
+from utils.grafico import Grafico
 from main import criaDataframe
 
 class Programa:
@@ -14,6 +14,7 @@ class Programa:
     '''
     def __init__(self):
         self.janela = Tk()
+        self.janela.title('Gráficos')
         self.widgets()
         self.carregado, self.veiculos, self.dataframe, self.dicionario, self.criadorDeGrafico  = False, [], None, {}, None
         
