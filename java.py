@@ -17,14 +17,7 @@ class Main:
         for i in veiculos: print(i, '\n')
 
         excluir = ['_Carro__modelo', '_Carro__etc']
-        dataframe = {key[8:]:[] for (key, value) in veiculos[0].__dict__.items() if key not in excluir}
-            
-        for carro in veiculos:
-            for chave, valor in carro.__dict__.items():
-                if chave not in excluir:
-                    dataframe[chave[8:]].append(valor)
-        dataframe['quilometragem'] = [int(x) for x in dataframe['quilometragem']]
-        resultado = pd.DataFrame(dataframe)
+        resultado = Main.criaDataFrame(excluir, veiculos)
         
         print('- - ' * 20 + "\n" + "Pandas.DataFrame")
         print(resultado)
@@ -34,6 +27,18 @@ class Main:
         criadorDeGrafico.graficoDeBarras('motor', 'Potência do motor', 'Potência')           
         criadorDeGrafico.graficoDeBarrasDeLado('transmissao', 'Tipo de transmissão', 'Tipo') 
         criadorDeGrafico.graficoPizza('cor', "Quantidade de cores", "Cores")                 
+
+    @staticmethod
+    def criaDataFrame(excluir, veiculos):
+        dataframe = {key[8:]:[] for (key, value) in veiculos[0].__dict__.items() if key not in excluir}
+            
+        for carro in veiculos:
+            for chave, valor in carro.__dict__.items():
+                if chave not in excluir:
+                    dataframe[chave[8:]].append(valor)
+        dataframe['quilometragem'] = [int(x) for x in dataframe['quilometragem']]
+        
+        return pd.DataFrame(dataframe)
 
 if __name__ == '__main__':
     Main.publicStaticVoidMain()
