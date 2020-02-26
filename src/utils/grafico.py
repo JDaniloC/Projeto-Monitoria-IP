@@ -7,7 +7,7 @@ class Grafico:
     def __init__(self, dicionario):
         self.dicionario = dicionario
 
-    def graficoDeBarras(self, tipo, titulo, nomeX, nomeY = "Quantidade"):
+    def graficoDeBarras(self, tipo, titulo = '', nomeX = '', nomeY = "Quantidade"):
         '''
         Recebe o tipo de dado (que contenha no dicionário oferecido)
         O título do gráfico
@@ -15,6 +15,8 @@ class Grafico:
         Nome do eixo Y (Quantidade por padrão)
         E plota um gráfico de barras verticais
         '''
+        if titulo == '':
+            titulo = tipo.capitalize()
         labels, quantidade = self.contaDados(tipo)
 
         figura, grafico = plt.subplots(figsize = (8, 7))
@@ -27,7 +29,7 @@ class Grafico:
             grafico.text(indice, valor + 0.1, str(valor))
         plt.show()
 
-    def graficoDeBarrasDeLado(self, tipo, titulo, nomeY, nomeX = "Quantidade"):
+    def graficoDeBarrasDeLado(self, tipo, titulo = '', nomeY = '', nomeX = "Quantidade"):
         '''
         Recebe o tipo de dado (que contenha no dicionário oferecido)
         O título do gráfico
@@ -35,6 +37,8 @@ class Grafico:
         Nome do eixo Y 
         E plota um gráfico de barras horizontais
         '''
+        if titulo == '':
+            titulo = tipo.capitalize()
         labels, quantidade = self.contaDados(tipo)
 
         plt.barh(labels, quantidade)
@@ -45,13 +49,15 @@ class Grafico:
             plt.text(valor, indice, str(valor))
         plt.show()
 
-    def graficoPizza(self, tipo, titulo, tituloDaLegenda):
+    def graficoPizza(self, tipo, titulo = '', tituloDaLegenda = ''):
         '''
         Recebe o tipo de dado (que contenha no dicionário oferecido)
         O título do gráfico
         O título da legenda
         E plota um gráfico de pizza
         '''
+        if titulo == '':
+            titulo = tipo.capitalize()
         labels, quantidade = self.contaDados(tipo)
 
         figura, grafico = plt.subplots(figsize = (7, 7))
