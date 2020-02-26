@@ -8,16 +8,25 @@
     <image src="./static/dual-grafico.png">
 </p>
 
-Ler arquivos (bem desorganizados) de modo a produzir gráficos
+Objetivo: Ler [arquivos](https://github.com/rodrigoap2/projetoMonitoriaIp) (bem desorganizados) de modo a produzir gráficos
+
+> Download, dependências e execução
+
+1 - Faça o download ou clone do repositório: [aqui](https://github.com/JDaniloC/Projeto-Monitoria-IP.git)
+
+2 - Tenha o python 3.6 acima, com a biblioteca pandas e matlibplot e rode o arquivo [main.py](./src/main.py)
+
+3 - De modo alternativo, pode fazê-lo com a interface gráfica rodando com as mesmas dependências o script [programa.py](./src/programa.py)
+
 
 <p align = 'center'>
-    <image width = 100% src="./static/dataframe.png"/> 
+    <image width = 100% src="./static/ui.png"/> 
 </p>
 
 
-> Foi permitido ser pythonic
->
-> Pediu pra usar orientação a objeto, então exagerei
+>>> Foi permitido ser pythonic
+>>>
+>>> Pediu pra usar orientação a objeto, então exagerei
 
 <img align="right" width='55%' src="./static/grafico02.png">
 

@@ -1,6 +1,6 @@
-from leitor import Leitor
-from carro import Carro
-from grafico import Grafico
+from utils.leitor import Leitor
+from utils.carro import Carro
+from utils.grafico import Grafico
 import pandas as pd
 
 def criaDataframe(excluir, veiculos, inteiro = None):
